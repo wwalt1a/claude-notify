@@ -1,0 +1,82 @@
+{
+  "name": "claude-notify",
+  "publisher": "wwalt1a",
+  "displayName": "Claude Notify",
+  "description": "Play sound notification when Claude Code finishes a task",
+  "version": "0.0.3",
+  "icon": "icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wwalt1a/claude-notify"
+  },
+  "keywords": ["claude", "claude-code", "notification", "sound", "alert"],
+  "engines": { "vscode": "^1.74.0" },
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claude-notify.toggle",
+        "title": "Claude Notify: Toggle Sound"
+      },
+      {
+        "command": "claude-notify.preview",
+        "title": "Claude Notify: Preview Current Sound"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Notify",
+      "properties": {
+        "claude-notify.sound": {
+          "type": "string",
+          "default": "success",
+          "enum": ["ding", "chime", "bell", "success", "custom"],
+          "enumDescriptions": [
+            "Short ding (default)",
+            "Two-tone chime",
+            "Classic bell",
+            "Success fanfare",
+            "Custom audio file (set claude-notify.customSoundPath)"
+          ],
+          "description": "Notification sound preset"
+        },
+        "claude-notify.customSoundPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to custom audio file (mp3/wav/ogg). Only used when sound is set to 'custom'."
+        },
+        "claude-notify.volume": {
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Notification volume (0.0 - 1.0)"
+        },
+        "claude-notify.showMessage": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show info message popup when task completes"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claude-notify",
+          "title": "Claude Notify",
+          "icon": "$(bell)"
+        }
+      ]
+    },
+    "views": {
+      "claude-notify": [
+        {
+          "type": "webview",
+          "id": "claude-notify.view",
+          "name": "Claude Notify"
+        }
+      ]
+    }
+  }
+}
