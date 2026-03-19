@@ -63,6 +63,17 @@ Add the following to your Claude Code settings (`~/.claude/settings.json`):
         ],
         "matcher": "*"
       }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "command": "date +%s%N > /tmp/claude-notify-trigger",
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
     ]
   }
 }
@@ -148,6 +159,17 @@ Claude Code 完成任务
       }
     ],
     "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "date +%s%N > /tmp/claude-notify-trigger",
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "PermissionRequest": [
       {
         "hooks": [
           {
