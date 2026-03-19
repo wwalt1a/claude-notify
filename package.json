@@ -3,7 +3,7 @@
   "publisher": "wwalt1a",
   "displayName": "Claude Notify",
   "description": "Play sound notification when Claude Code finishes a task",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "icon.png",
   "license": "MIT",
   "repository": {
